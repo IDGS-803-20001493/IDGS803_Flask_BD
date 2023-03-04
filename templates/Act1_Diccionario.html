@@ -1,0 +1,28 @@
+{% extends "layout.html"%}
+
+{% block content%}
+{% from "_macros.html" import render_field%}
+
+<form action="/guardar" method="POST" novalidate>
+        {{form.csrf_token}}
+        <input name="csrf_token" value="{{csrf_token()}}" hidden/>
+{{render_field(form.español)}}
+{{render_field(form.ingles)}}
+<button type="submit">Guardar</button>
+</form>
+
+<hr>
+<form action="/busqueda" method="POST" novalidate>
+    {{form.csrf_token}}
+        <input name="csrf_token" value="{{csrf_token()}}" hidden/>
+    
+    <br>
+    <label>Filtro: <input name="txtFiltro"/> <button type="submit">Buscar</button></label>
+    <br><br>
+    <input value="Español" type="radio" name="btnLenguaje"/> Español
+    <input value="Ingles" type="radio" name="btnLenguaje"/>Ingles
+    <br><br>
+    <textarea style="height: 100px; width: 200px;"> {{resultado}}</textarea>
+</form>
+
+{%endblock%}

@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<center>
+    <br>
+        <input value="Maximo : {{maximo}}" disabled />
+        <br><br>
+        <input value="Minimo : {{minimo}}" disabled />
+        <br><br>
+        <input value="promedio : {{promedio}}" disabled />
+        <br><br>
+        <label>Se repitieron:</label>
+        <textarea style="width: 300px; height: 200px;">
+            {% for numero, cantidad in contador.items()%}
+                {% if cantidad > 1: %}
+                #Numero-. {{numero}} =  {{cantidad}} veces. 
+                {% endif %}
+            {% endfor %}
+        </textarea>
+        </center>
+
+{% endblock %}
